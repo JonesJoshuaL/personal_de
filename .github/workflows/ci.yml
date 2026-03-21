@@ -1,4 +1,4 @@
-name: CI (Prettier only)
+name: CI (Prettier with Apex)
 
 on:
   push:
@@ -15,5 +15,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Prettier check
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - name: Install Prettier + Apex plugin only
+        run: npm i -D prettier prettier-plugin-apex
+      - name: Prettier check (all files, including Apex)
         run: npx prettier --check .
