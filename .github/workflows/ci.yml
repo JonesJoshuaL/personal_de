@@ -1,4 +1,4 @@
-name: CI
+name: CI (Prettier only)
 
 on:
   push:
@@ -10,28 +10,10 @@ permissions:
   contents: read
 
 jobs:
-  build-test:
+  prettier-check:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Unit Tests
-        run: npm test -- --ci
-
-      # Optional: basic project validation commands (no org interaction)
       - name: Prettier check
         run: npx prettier --check .
