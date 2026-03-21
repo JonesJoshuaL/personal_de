@@ -19,8 +19,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-      - name: Install Prettier + Apex plugin only
-        run: npm i -D prettier prettier-plugin-apex
+          cache: "false"
+      - name: Install Prettier + Apex plugin only (no lockfile)
+        run: npm install --no-audit --no-fund prettier prettier-plugin-apex
       - name: Prettier check (all files, including Apex)
         run: npx prettier --check .
