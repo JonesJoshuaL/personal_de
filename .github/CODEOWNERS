@@ -1,0 +1,10 @@
+# CODEOWNERS
+# Learn more: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for all files
+* @JonesJoshuaL
+
+# Example: route certain paths to specific owners (uncomment and edit as needed)
+# /force-app/main/default/classes/ @SalesforceDevTeam
+# /force-app/main/default/lwc/ @FrontendTeam
+# /manifest/ @ReleaseManagers
