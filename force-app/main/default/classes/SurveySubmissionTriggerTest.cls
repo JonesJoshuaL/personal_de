@@ -38,7 +38,7 @@ public class SurveySubmissionTriggerTest {
             WHERE External_ID__c = 'EXT-100'
         ];
 
-        System.assertEquals(75, updatedMember.Total_Points__c, 'Points should be updated correctly');
+        Assert.areEqual(75, updatedMember.Total_Points__c, 'Points should be updated correctly');
     }
 
     /**
@@ -66,8 +66,8 @@ public class SurveySubmissionTriggerTest {
             WHERE External_ID__c = 'NEW-999'
         ];
 
-        System.assertEquals(1, newMembers.size(), 'Should create one new member');
-        System.assertEquals(30, newMembers[0].Total_Points__c, 'New member should have correct points');
+        Assert.areEqual(1, newMembers.size(), 'Should create one new member');
+        Assert.areEqual(30, newMembers[0].Total_Points__c, 'New member should have correct points');
         Assert.isTrue(newMembers[0].Name.startsWith('Placeholder Member'), 'New member should have placeholder name');
     }
 
@@ -96,7 +96,7 @@ public class SurveySubmissionTriggerTest {
             WHERE External_ID__c = 'EXT-101'
         ];
 
-        System.assertEquals(0, members.size(), 'Should not create member for null score');
+        Assert.areEqual(0, members.size(), 'Should not create member for null score');
     }
 
     /**

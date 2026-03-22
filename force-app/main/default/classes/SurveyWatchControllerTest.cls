@@ -30,15 +30,15 @@ public class SurveyWatchControllerTest {
         List<Panel_Member__c> result = SurveyWatchController.getRecentSurveys();
 
         // Verify results
-        System.assertNotEquals(null, result, 'Result should not be null');
-        System.assertEquals(5, result.size(), 'Should return 5 records');
+        Assert.isNotNull(result, 'Result should not be null');
+        Assert.areEqual(5, result.size(), 'Should return 5 records');
 
         // Verify records are ordered by Last_Survey_Date__c descending
         for (Integer i = 0; i < result.size() - 1; i++) {
-            // Use assert with condition check instead of assertTrue
-            if (!(result[i].Last_Survey_Date__c >= result[i + 1].Last_Survey_Date__c)) {
-                System.assert(false, 'Records should be ordered by Last_Survey_Date__c descending');
-            }
+            Assert.isTrue(
+                result[i].Last_Survey_Date__c >= result[i + 1].Last_Survey_Date__c,
+                'Records should be ordered by Last_Survey_Date__c descending'
+            );
         }
     }
 
@@ -52,10 +52,8 @@ public class SurveyWatchControllerTest {
         try {
             SurveyWatchController.testEvent();
             // If we reach here, the method executed successfully
-            System.assert(true, 'testEvent method executed without throwing exceptions');
         } catch (Exception e) {
-            // Use System.assert with false to simulate fail
-            System.assert(false, 'testEvent method threw an exception: ' + e.getMessage());
+            Assert.fail('testEvent method threw an exception: ' + e.getMessage());
         }
     }
 }

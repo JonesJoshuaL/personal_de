@@ -38,10 +38,11 @@ public class SurveySubmissionTriggerHandlerTest {
             WHERE External_ID__c = 'EXT-100'
         ];
 
-        System.assertEquals(75, updatedMember.Total_Points__c, 'Points should be updated correctly');
-        if (existingMember.Last_Survey_Date__c == updatedMember.Last_Survey_Date__c) {
-            System.assert(false, 'Last survey date should be updated');
-        }
+        Assert.areEqual(75, updatedMember.Total_Points__c, 'Points should be updated correctly');
+        Assert.isTrue(
+            existingMember.Last_Survey_Date__c < updatedMember.Last_Survey_Date__c,
+            'Last survey date should be updated'
+        );
     }
 
     /**
@@ -68,11 +69,12 @@ public class SurveySubmissionTriggerHandlerTest {
             WHERE External_ID__c = 'NEW-999'
         ];
 
-        System.assertEquals(1, newMembers.size(), 'Should create one new member');
-        System.assertEquals(30, newMembers[0].Total_Points__c, 'New member should have correct points');
-        if (!newMembers[0].Name.startsWith('Placeholder Member')) {
-            System.assert(false, 'New member should have placeholder name');
-        }
+        Assert.areEqual(1, newMembers.size(), 'Should create one new member');
+        Assert.areEqual(30, newMembers[0].Total_Points__c, 'New member should have correct points');
+        Assert.isTrue(
+            newMembers[0].Name.startsWith('Placeholder Member'),
+            'New member should have placeholder name'
+        );
     }
 
     /**
@@ -105,7 +107,7 @@ public class SurveySubmissionTriggerHandlerTest {
             WHERE External_ID__c = 'EXT-101'
         ];
 
-        System.assertEquals(135, updatedMember.Total_Points__c, 'Points should accumulate correctly');
+        Assert.areEqual(135, updatedMember.Total_Points__c, 'Points should accumulate correctly');
     }
 
     /**
@@ -132,7 +134,7 @@ public class SurveySubmissionTriggerHandlerTest {
             WHERE External_ID__c = 'EXT-102'
         ];
 
-        System.assertEquals(0, members.size(), 'Should not create member for null score');
+        Assert.areEqual(0, members.size(), 'Should not create member for null score');
     }
 
     /**
