@@ -20,40 +20,40 @@ This repository is primarily for my personal Salesforce development and experime
 ## Quick start (scratch org)
 
 1. Install dependencies
-   ```
-   npm ci
-   ```
+    ```
+    npm ci
+    ```
 2. Create a scratch org
-   ```
-   sf org create scratch -f config/project-scratch-def.json -a myScratch -d 7 -s
-   ```
+    ```
+    sf org create scratch -f config/project-scratch-def.json -a myScratch -d 7 -s
+    ```
 3. Push source
-   ```
-   sf project deploy start -d force-app -o myScratch
-   ```
+    ```
+    sf project deploy start -d force-app -o myScratch
+    ```
 4. Open the org
-   ```
-   sf org open -o myScratch
-   ```
+    ```
+    sf org open -o myScratch
+    ```
 
 ## Validation
 
 - Lint
-  ```
-  npm run lint
-  ```
+    ```
+    npm run lint
+    ```
 - Unit tests
-  ```
-  npm test
-  ```
+    ```
+    npm test
+    ```
 - Format (Prettier)
-  ```
-  npm run format
-  ```
+    ```
+    npm run format
+    ```
 - Optional dry-run deploy (no changes committed to an org)
-  ```
-  sf project deploy start -d force-app -o myScratch --dry-run
-  ```
+    ```
+    sf project deploy start -d force-app -o myScratch --dry-run
+    ```
 
 ## NPM scripts
 

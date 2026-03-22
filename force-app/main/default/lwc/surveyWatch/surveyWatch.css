@@ -1,0 +1,21 @@
+.record-card {
+    animation: slideIn 0.4s ease-out;
+    border-left: 4px solid #0176d3;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}

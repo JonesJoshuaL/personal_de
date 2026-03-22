@@ -1,0 +1,36 @@
+<template>
+  <lightning-card title="Real-Time Survey Monitor" icon-name="standard:marketing_communications">
+    <div class="slds-var-m-around_medium">
+      <template lwc:if={hasRecords}>
+        <template for:each={displayRecords} for:item="record">
+          <div key={record.Id} class="record-card slds-box slds-box_x-small slds-var-m-bottom_x-small slds-theme_shade">
+            <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+              <div>
+                <p class="slds-text-heading_small">{record.Name}</p>
+                <p class="slds-text-body_small">
+                  Updated:
+                  <lightning-formatted-date-time
+                    value={record.Last_Survey_Date__c}
+                    hour="2-digit"
+                    minute="2-digit"
+                    second="2-digit">
+                  </lightning-formatted-date-time>
+                </p>
+              </div>
+              <lightning-badge
+                label={record.Total_Points__c}
+                icon-name="utility:favorite_border"
+                class="slds-theme_success"></lightning-badge>
+            </div>
+          </div>
+        </template>
+      </template>
+      <template lwc:else>
+        <p class="slds-text-align_center slds-text-color_weak">Waiting for survey activity...</p>
+      </template>
+    </div>
+  </lightning-card>
+  <div class="button-container">
+    <lightning-button label="Test New Survey Event" onclick={buttonTestEvent}></lightning-button>
+  </div>
+</template>
