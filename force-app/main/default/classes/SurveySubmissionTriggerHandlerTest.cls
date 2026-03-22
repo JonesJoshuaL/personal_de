@@ -71,10 +71,7 @@ public class SurveySubmissionTriggerHandlerTest {
 
         Assert.areEqual(1, newMembers.size(), 'Should create one new member');
         Assert.areEqual(30, newMembers[0].Total_Points__c, 'New member should have correct points');
-        Assert.isTrue(
-            newMembers[0].Name.startsWith('Placeholder Member'),
-            'New member should have placeholder name'
-        );
+        Assert.isTrue(newMembers[0].Name.startsWith('Placeholder Member'), 'New member should have placeholder name');
     }
 
     /**
